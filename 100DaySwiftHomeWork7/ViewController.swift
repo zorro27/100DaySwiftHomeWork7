@@ -11,11 +11,15 @@ class ViewController: UITableViewController {
     
     var petitions = [Petition]()
     
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        createInfoButton()
+        dataLoading()
+    }
+    
+    func dataLoading() {
         let urlString: String
-         createInfoButton()
-        
         if navigationController?.tabBarItem.tag == 0 {
             urlString = "https://www.hackingwithswift.com/samples/petitions-1.json"
         } else {
