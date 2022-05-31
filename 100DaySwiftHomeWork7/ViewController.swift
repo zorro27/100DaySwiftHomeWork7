@@ -14,6 +14,7 @@ class ViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         let urlString: String
+         createInfoButton()
         
         if navigationController?.tabBarItem.tag == 0 {
             urlString = "https://www.hackingwithswift.com/samples/petitions-1.json"
@@ -44,6 +45,17 @@ class ViewController: UITableViewController {
             petitions = jsonPetition.results
             tableView.reloadData()
         }
+    }
+    
+    func createInfoButton() {
+        let button = UIBarButtonItem.init(barButtonSystemItem: .play, target: self, action: #selector(info))
+        navigationItem.rightBarButtonItem = button
+    }
+    
+    @objc func info() {
+        let ac = UIAlertController(title: "Hi", message: "Информация взята с We The People API Белого дома.", preferredStyle: .alert)
+        ac.addAction(.init(title: "Cancel", style: .cancel))
+        present(ac, animated: true)
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
